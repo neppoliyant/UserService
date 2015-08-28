@@ -129,13 +129,10 @@ app.get(/^\/docs(\/.*)?$/, function(req, res, next) {
 });
 app.listen(8002);
 
-//version check
-app.get('/Swagger', function(req, res, next) {
-  res.render('index.html');   
-});
-
-
-
 server.listen(app.get('port'), function(){
-	console.log("Express server listening on port " + app.get('port'));
-});
+      console.log("Express server listening on port " + app.get('port'));
+  });
+
+
+
+
