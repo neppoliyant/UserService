@@ -25,6 +25,7 @@
     "method-override": ">1.0.0",
     "cors": ">0.0.0",
     "winston": ">0.0.0",
-    "couchbase": ">=0.0.0"
+    "couchbase": ">=0.0.0",
+    "swagger-node-express": "~2.0"
   }
 }
