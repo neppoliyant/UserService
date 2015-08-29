@@ -1,3 +1,4 @@
+var config = require('../config/config.js');
 
 function constructErrorMessage(errorMessage, status) {
     var obj = {};
@@ -14,6 +15,13 @@ function constructSuccessMessage(message, status, body) {
     obj.message = message;
     obj.body = body;
     return obj;
+}
+
+function userToken (user, password) {
+    var userCombo = user + ':' + password;  
+    var key = config.secret || 'x3efs2r3kdsnvsdvs32r322poujhdue388';
+    var hash = crypto.createHmac('sha1', key).update(userCombo).digest('base64');
+    return hash;
 }
 
 module.exports.constructErrorMessage = constructErrorMessage;

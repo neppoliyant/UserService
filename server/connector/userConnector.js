@@ -1,6 +1,6 @@
 var constructErrorMessage = require('../utils/appUtils').constructErrorMessage;
 var constructSuccessMessage = require('../utils/appUtils').constructSuccessMessage;
-var request = require('../connector/RequestAPI');
+var request = require('../connector/requestAPI');
 var config = require('../config/config.js');
 
 function getUsers(req, res) {

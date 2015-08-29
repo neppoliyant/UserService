@@ -51,6 +51,10 @@ app.get('/version.html', function(req, res, next) {
   res.send('App version is 1.0');   
 });
 
+app.get('/Swagger', function(req, res, next) {
+  res.render('index.html');   
+});
+
 var corsOptions = {
   credentials: true,
   origin: function(origin,callback) {
