@@ -24,7 +24,6 @@ app.use(new rack.JadeAsset({
   url: '/js/jadeTemplates.js',
   dirname: __dirname + '/server/views'})
 );
-app.use(express.favicon(__dirname + '/public/img/favicon.ico'));
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.urlencoded());
