@@ -37,5 +37,13 @@ module.exports = function() {
         user.deleteUserbyId(req, res);      
     });
 
+    app.post('/login', function(req, res, next) {
+        user.login(req, res);   
+    });
+
+    app.post('/register', function(req, res, next) {
+       user.register(req, res);  
+    });
+
 	return app;
 }();

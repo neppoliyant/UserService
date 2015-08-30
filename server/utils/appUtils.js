@@ -1,4 +1,5 @@
 var config = require('../config/config.js');
+var crypto = require('crypto');
 
 function constructErrorMessage(errorMessage, status) {
     var obj = {};
@@ -26,3 +27,4 @@ function userToken (user, password) {
 
 module.exports.constructErrorMessage = constructErrorMessage;
 module.exports.constructSuccessMessage = constructSuccessMessage;
+module.exports.userToken = userToken;
