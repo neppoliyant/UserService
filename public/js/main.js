@@ -35,7 +35,7 @@ var AppRouter = Backbone.Router.extend({
 
     Loggedhome: function (id) {
         this.headerView = new LoggedHeaderView({model: app.model});
-        this.homeView = new LoggedHomeView({model: app.model});
+        this.homeView = new DashboardView({model: app.model});
         $('.header').html(this.headerView.el);
         $('#content').html(this.homeView.el);
     },
@@ -47,7 +47,7 @@ var AppRouter = Backbone.Router.extend({
     },
 
     dashboard: function (id) {
-        $('#content').html(new DashboardView().el);
+        $('#content').html(new DashboardView({model: app.model}).el);
     },
 
 	profile: function() {
