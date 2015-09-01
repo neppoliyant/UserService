@@ -41,6 +41,7 @@ app.use(app.router);
 
 app.use('/rest', require ('./server/service/appStatus'));
 app.use('/rest', require ('./server/service/userService'));
+app.use('/rest', require ('./server/service/trainerService'));
 
 //Health check
 app.get('/health.html', function(req, res, next) {

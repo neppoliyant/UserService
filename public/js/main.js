@@ -73,7 +73,7 @@ var AppRouter = Backbone.Router.extend({
     },
 
     contactus: function () {
-       $('#content').html(new ContactusView().el);
+        $('#content').html(new ContactusView().el);
     },
 
     trainers: function () {

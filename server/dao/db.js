@@ -2,7 +2,7 @@ var couchbase = require("couchbase");
 var config = require('../config/config.js');
 var ViewQuery = couchbase.ViewQuery;
 var N1qlQuery = couchbase.N1qlQuery;
-var query = ViewQuery.from('user', 'by_email');
+var query = ViewQuery.from("dev_trainers", 'trainers');
 var sqlQuery = N1qlQuery.fromString('SELECT * FROM ' + config.couchBase.bucketName);
 var db;
 
@@ -46,7 +46,15 @@ function updateUser(key, val, callback) {
 }
 
 function getAllUser(callback) {
+    getDb(); 
     db.query(sqlQuery, function(err, res) {
+        callback(err, res);
+    });
+}
+
+function getAllTrainers(callback) {
+    getDb(); 
+    db.query(query, function(err, res) {
         callback(err, res);
     });
 }
@@ -55,6 +63,7 @@ function getAllUser(callback) {
 module.exports.getMultiUser = getMultiUser;
 module.exports.getUser = getUser;
 module.exports.getAllUser = getAllUser;
+module.exports.getAllTrainers = getAllTrainers;
 module.exports.deleteUser = deleteUser;
 module.exports.updateUser = updateUser;
 

@@ -28,6 +28,7 @@
     "couchbase": ">=0.0.0",
     "swagger-node-express": "~2.0",
     "mongodb": "1.1.8",
-    "socket.io": "0.9.10"
+    "socket.io": "0.9.10",
+    "backbone-tree-view": ">0.0.1"
   }
 }

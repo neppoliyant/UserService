@@ -97,9 +97,28 @@ function deleteUserbyId(req, res) {
     }
 }
 
+function getAllTrainers(req, res) {
+    db.getAllTrainers(function(err, result) {
+        if (err || !result) {
+            res.statusCode = 500;
+            console.log(err);
+            console.log(result);
+            res.send(constructErrorMessage(err, 500));
+        } else {
+            res.statusCode = 200;
+            var resValue = [];
+            for(var i=0;i<result.length;i++){
+                resValue.push(result[i].value);
+            }
+            res.send(resValue);
+        }
+    });
+}
+
 module.exports.getUserbyId = getUserbyId;
 module.exports.addUser = addUser;
 module.exports.deleteUserbyId = deleteUserbyId;
 module.exports.login = login;
 module.exports.register = register;
+module.exports.getAllTrainers = getAllTrainers;
 
