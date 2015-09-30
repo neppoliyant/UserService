@@ -1,9 +1,50 @@
 <div class="row-fluid">
-    <div class="span12">
-    	<legend><h4>Workouts</h4></legend>
+
+	<div class="control-group">
+        <label for="name" class="control-label">Select Day:</label>
+
+        <div class="controls">
+            <select id="country-selector">
+		         <% _.each(weeklyExercises, function(country) {%>
+		            <option value="<%= country.val %>"><%= country.day %></option>
+		        <% }); %>
+		    </select>
+        </div>
     </div>
-    <div class="span12">
-    	<div class="span4">
-    	</div>
-    </div>
+	
+    <div class="panel panel-default">
+		<div class="panel-heading"><%= workout.muscleGroup %></div>
+		<div class="panel-body">
+		<table class="table table-hover">
+		<tr>
+			<th>Exercise Name</th>
+			<th>Sets</th>
+			<th>Reps</th>
+			<th>Position 1</th>
+			<th>Position 2</th>
+			<th>Video</th>
+		</tr>	
+		<% _.each(workout.exercise, function(exer){ %>
+		<tr>
+		<td> <%= exer.exercuseName %>
+		</td>
+		<td> <%= exer.sets %>
+		</td>
+		<td> <%= exer.reps %>
+		</td>
+		<td> <img src="http://www.bodybuilding.com/exercises/exerciseImages/sequences/<%= exer.postion2 %>" style="width:200px;height:228px;">
+		</td>
+		<td> <img src="http://www.bodybuilding.com/exercises/exerciseImages/sequences/<%= exer.postion1 %>" style="width:200px;height:228px;">
+		</td>
+		<td> 
+			<video width="400" controls>
+			  <source src="http://videocdn.bodybuilding.com/video/mp4/<%= exer.videoUrl %>" type="video/mp4">
+			  Your browser does not support HTML5 video.
+			</video>
+		</td>
+		</tr>
+		<% }); %>
+	 </table>
+		</div>
+	</div>
 </div>

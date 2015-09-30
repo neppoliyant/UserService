@@ -167,3 +167,19 @@ window.Trainer = Backbone.Model.extend({
         id: ""
     }
 });
+
+window.Workout = Backbone.Model.extend({
+
+    urlRoot: "/rest/workout",
+
+    idAttribute: "_id",
+
+    initialize: function () {
+    },
+
+    defaults: {
+        id: null,
+        body: {},
+        weeklyExercise: []
+    }
+});

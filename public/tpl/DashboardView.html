@@ -8,53 +8,23 @@
 			<div class="panel-body">
 				<table class="table table-hover">
 					<tr>
-						<td> Days
-						</td>
-						<td> Body Focus
-						</td>
-						<td> Level
-						</td>
+						<th> Days
+						</th>
+						<th> Body Focus
+						</th>
+						<th> Level
+						</th>
 					</tr>
+					<% _.each(weeklyExercises, function(exercise) {%>
 					<tr>
-						<td> Monday
+						<td> <%= exercise.day %>
 						</td>
-						<td> Chest
+						<td> <%= exercise.muscleGroup %>
 						</td>
 						<td> low
 						</td>
 					</tr>
-					<tr>
-						<td> Tuesday
-						</td>
-						<td> Biceps
-						</td>
-						<td> low
-						</td>
-					</tr>
-					<tr>
-						<td> Wednesday
-						</td>
-						<td> Shoulders
-						</td>
-						<td> medium
-						</td>
-					</tr>
-					<tr>
-						<td> Thursday
-						</td>
-						<td> Triceps
-						</td>
-						<td> low
-						</td>
-					</tr>
-					<tr>
-						<td> Friday
-						</td>
-						<td> Legs
-						</td>
-						<td> low
-						</td>
-					</tr>
+					<% }); %>
 				</table>
 			</div>
 		</div>

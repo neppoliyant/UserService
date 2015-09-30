@@ -45,5 +45,11 @@ module.exports = function() {
        user.register(req, res);  
     });
 
+    app.get('/workout/:id', function(req, res, next) {
+        console.log('user id : ' + req.params.id);
+        user.getUserbyId(req, res);
+    });
+
+
 	return app;
 }();
