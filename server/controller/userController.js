@@ -3,6 +3,8 @@ var constructErrorMessage = require('../utils/appUtils').constructErrorMessage;
 var constructSuccessMessage = require('../utils/appUtils').constructSuccessMessage;
 var db = require('../dao/db');
 var utils = require('../utils/appUtils');
+var fs = require('fs');
+var config = require('../config/config.js');
 
 function getUserbyId(req, res) {
 
@@ -115,10 +117,36 @@ function getAllTrainers(req, res) {
     });
 }
 
+function savePicture(req, res) {
+    var dir = config.dir + req.params.id + ".png";
+    var data = req.body.body.imageData;
+    fs.writeFile(dir, data, 'binary', function(err){
+        if (err) throw err
+        console.log('File saved.')
+    });
+    res.statusCode = 200;
+    res.send("Success");
+}
+
+function getPicture(req, res) {
+    var dir = config.dir + req.params.id + ".png";
+    fs.readFile('image.jpg', function (err, data) {
+        var data1 = {};
+      if (err) {
+        data1.error = true;
+      } else {
+        data1.image = data;
+      }
+      res.send(data1);
+    });
+}
+
 module.exports.getUserbyId = getUserbyId;
 module.exports.addUser = addUser;
 module.exports.deleteUserbyId = deleteUserbyId;
 module.exports.login = login;
 module.exports.register = register;
 module.exports.getAllTrainers = getAllTrainers;
+module.exports.savePicture = savePicture;
+module.exports.getPicture = getPicture;
 

@@ -183,3 +183,19 @@ window.Workout = Backbone.Model.extend({
         weeklyExercise: []
     }
 });
+
+window.Picture = Backbone.Model.extend({
+
+    urlRoot: "/rest/picture",
+
+    idAttribute: "_id",
+
+    initialize: function () {
+    },
+
+    defaults: {
+        id: null,
+        body: {},
+        weeklyExercise: []
+    }
+});

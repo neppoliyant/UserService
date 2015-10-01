@@ -11,6 +11,7 @@ window.RegisterView = Backbone.View.extend({
 
     events: {
         "change"        : "change",
+        "change input[type=file]": "uploadFile",
         "click .save"   : "beforelogin"
     },
 
@@ -33,6 +34,10 @@ window.RegisterView = Backbone.View.extend({
         }
     },
 
+    uploadFile: function (event) {
+        alert(event.target.value);
+    },
+
     beforelogin: function () {
         var self = this;
         var check = this.model.validateAll();
@@ -46,7 +51,33 @@ window.RegisterView = Backbone.View.extend({
 
     login: function () {
         var self = this;
-        console.log('before save');
+
+        var file = this.$('form :file')[0].files[0];
+
+        if (!file.type.match('image.*')) {
+            alert("Please select only image");
+            return;
+        }
+
+        var reader = new FileReader();
+
+        var self = this;
+
+        reader.onload = (function(theFile) {
+            return function(e) {
+                    var picture = new Picture({_id : self.model.attributes.email});
+                    picture.attributes.body.imageData = e.target.result;
+                    alert(self.model.attributes.email); 
+                    picture.save(null, {
+                    success: function (response) {
+                        console.log(response);
+                    }
+                }, self);
+            };
+        })(file);
+
+        reader.readAsBinaryString(file);
+
         this.model.save(null, {
             success: function (model) {
                 self.render();

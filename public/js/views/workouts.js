@@ -10,7 +10,8 @@ window.WorkoutsView = Backbone.View.extend({
     },
     initialize: function () {
     	console.log(app.model);
-    	var id = app.model.id + 'WO1';
+        //var id = app.model.id + 'WO1';
+    	var id = 'WO1';
     	this.workout = new Workout({_id: id});
     	var self = this;
     	this.workout.fetch({
@@ -18,6 +19,9 @@ window.WorkoutsView = Backbone.View.extend({
             	console.log(response);
                 self.weeklyExercise = response.attributes.weeklyExercise;
                 self.render();
+            },
+            error: function (error) {
+
             }
         }, self);
     },

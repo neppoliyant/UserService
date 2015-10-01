@@ -1,6 +1,7 @@
 window.TrainersView = Backbone.View.extend({
     events: {
-        "click .searchTrainer" : "search"
+        "click .searchTrainer" : "search",
+        "click .Subscribe" : "subscribe"
     },
 
     initialize: function () {
@@ -26,6 +27,15 @@ window.TrainersView = Backbone.View.extend({
         $(this.el).html(this.template({ clients: collection.toJSON() }));
         return this;
     },
+
+    subscribe: function(e){
+        if (!app.model) {
+            alert("Please login to subscribe");
+            return;
+        }
+        app.trainerDetail = e.target.value;
+        app.navigate('trainer', true);
+    },
 });
 
 window.TrainerCollection = Backbone.Collection.extend({
@@ -38,5 +48,28 @@ window.TrainerCollection = Backbone.Collection.extend({
             return pattern.test(data.get("name"));
         });
         return new TrainerCollection(filtered);
+    }
+});
+
+window.TrainerIndividualView = Backbone.View.extend({
+    events: {
+    },
+    initialize: function () {
+        this.trainer = new Trainer({id : app.trainerDetail});
+        var self = this;
+        this.trainer.fetch({
+            success: function (trainer) {
+                console.log(trainer);
+                self.render(trainer);
+            },
+            error: function (error) {
+                app.navigate('trainers', true);
+            }
+        }, self);
+    },
+
+    render: function (trainer) {
+        $(this.el).html(this.template(trainer.toJSON()));
+        return this;
     }
 });

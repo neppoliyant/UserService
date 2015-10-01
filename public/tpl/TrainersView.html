@@ -16,7 +16,8 @@
 		    <div class="thumbnail">
 		      <img src="<%= trainer.picture %>" style="width:200px;height:228px;">
 		      <div class="caption">
-		        <h3><%= trainer.name %></h3>
+		        <h3><%= trainer.name %></h3> <div class="pull-right">
+				<button class="btn btn-default Subscribe" value="<%= trainer.id %>" type="submit">Subscribe</button></div>
 		        <p>Rating: <%= trainer.ratings %></p>
 		        <p>Site: <%= trainer.siteUrl %></p>
 		        <p>Description: <%= trainer.description %></p>

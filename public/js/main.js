@@ -11,7 +11,8 @@ var AppRouter = Backbone.Router.extend({
         "register"          : "register",
         "contactus"         : "contactus",
         "trainers"          : "trainers",
-        "workouts"          : "workouts"
+        "workouts"          : "workouts",
+        "trainer"            : "trainer"
     },
 
     initialize: function () {
@@ -36,6 +37,12 @@ var AppRouter = Backbone.Router.extend({
     Loggedhome: function (id) {
         this.headerView = new LoggedHeaderView({model: app.model});
         this.homeView = new DashboardView({model: app.model});
+        $('.header').html(this.headerView.el);
+        $('#content').html(this.homeView.el);
+    },
+
+    trainer: function (id) {
+        this.homeView = new TrainerIndividualView({model: app.model});
         $('.header').html(this.headerView.el);
         $('#content').html(this.homeView.el);
     },
@@ -86,7 +93,7 @@ var AppRouter = Backbone.Router.extend({
 
 });
 
-utils.loadTemplate(['HomeView', 'HeaderView', 'AboutView', 'RegisterView', 'LoggedHomeView', 'LoggedHeaderView', 'ProfileView', 'DashboardView', 'SettingsView', 'TrainersView', 'ContactusView', 'WorkoutsView'], function() {
+utils.loadTemplate(['HomeView', 'HeaderView', 'AboutView', 'RegisterView', 'LoggedHomeView', 'LoggedHeaderView', 'ProfileView', 'DashboardView', 'SettingsView', 'TrainersView', 'ContactusView', 'WorkoutsView', 'TrainerIndividualView'], function() {
     app = new AppRouter();
     Backbone.history.start();
 });

@@ -50,6 +50,16 @@ module.exports = function() {
         user.getUserbyId(req, res);
     });
 
+    app.put('/picture/:id', function(req, res, next) {
+        console.log('user id : ' + req.params.id);
+        user.savePicture(req, res);
+    });
+
+    app.get('/picture/:id', function(req, res, next) {
+        console.log('user id : ' + req.params.id);
+        user.savePicture(req, res);
+    });
+
 
 	return app;
 }();
