@@ -1,7 +1,7 @@
 window.DashboardView = Backbone.View.extend({
 
     initialize: function () {
-        var id = app.model.id + 'WO1';
+        var id = 'WO1';
     	this.workout = new Workout({_id: id});
     	var self = this;
     	this.workout.fetch({
