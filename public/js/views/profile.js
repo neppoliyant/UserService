@@ -5,7 +5,7 @@ window.ProfileView = Backbone.View.extend({
     },
 
     render: function () {
-        $(this.el).html(this.template());
+        $(this.el).html(this.template(app.model.toJSON()));
         return this;
     }
 });

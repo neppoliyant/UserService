@@ -35,7 +35,6 @@ window.RegisterView = Backbone.View.extend({
     },
 
     uploadFile: function (event) {
-        alert(event.target.value);
     },
 
     beforelogin: function () {
@@ -67,7 +66,6 @@ window.RegisterView = Backbone.View.extend({
             return function(e) {
                     var picture = new Picture({_id : self.model.attributes.email});
                     picture.attributes.body.imageData = e.target.result;
-                    alert(self.model.attributes.email); 
                     picture.save(null, {
                     success: function (response) {
                         console.log(response);
