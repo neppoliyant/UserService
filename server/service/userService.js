@@ -57,7 +57,7 @@ module.exports = function() {
 
     app.get('/picture/:id', function(req, res, next) {
         console.log('user id : ' + req.params.id);
-        user.savePicture(req, res);
+        user.getPicture(req, res);
     });
 
 

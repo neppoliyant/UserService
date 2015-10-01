@@ -130,14 +130,16 @@ function savePicture(req, res) {
 
 function getPicture(req, res) {
     var dir = config.dir + req.params.id + ".png";
-    fs.readFile('image.jpg', function (err, data) {
+    fs.readFile(dir, function (err, data) {
         var data1 = {};
-      if (err) {
-        data1.error = true;
-      } else {
-        data1.image = data;
-      }
-      res.send(data1);
+        if (err) {
+            res.statusCode = 400;
+            res.send("Error");
+        } else {
+            res.statusCode = 200;
+            res.setHeader('content-type', 'image/png');
+            res.send(data);
+        }
     });
 }
 
