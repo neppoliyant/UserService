@@ -1,24 +1,31 @@
 <div class="row-fluid">
+	<div class="span12">
+    	<legend><h4>Profile </h4></legend>
+    </div>
     <div class="span12">
-        <h4>Profile View</h4>
 
-        <div class="span5">
+        <div class="span2">
 		<div class="panel panel-default">
-		<div class="panel-heading"><%= name %></div>
+		<div class="panel-body">
+			<div class="col-sm-2 col-md-4">
+		      <img src="<%= picture %>" style="width:200px;height:228px;">
+		    </div>
+		</div>
+		</div>
+		</div>
+
+		<div class="span6">
+		<div class="panel panel-default">
+		<div class="panel-heading">Info <div class="pull-right"> <a value="<%= id %>">Edit</a></div></div>
 		<div class="panel-body">
 			<div class="col-sm-6 col-md-4">
-		    <div class="thumbnail">
-		      <img src="<%= picture %>" style="width:200px;height:228px;">
-		      <div class="caption">
-		        <h3><%= name %></h3>
-		        <p>Email: <%= email %></p>
-		        <p>Password: <%= password %></p>
-		        <p>Type: <%= type %></p>
-		      </div>
-		    </div>
-		  </div>
+				<p> Name : <%= name %> </p>
+				<p> Email : <%= email %> </p>
+				<p> Type : <%= type %> </p>
+		  	</div>
 		</div>
 		</div>
 		</div>
+
     </div>
 </div>
