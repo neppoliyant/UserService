@@ -41,8 +41,20 @@ module.exports = function() {
         user.login(req, res);   
     });
 
+    app.put('/login/:id', function(req, res, next) {
+        user.register(req, res);    
+    });
+
     app.post('/register', function(req, res, next) {
        user.register(req, res);  
+    });
+
+    app.put('/register/:id', function(req, res, next) {
+       user.register(req, res);  
+    });
+
+    app.get('/register/:id', function(req, res, next) {
+       user.getUserbyId(req, res);  
     });
 
     app.get('/workout/:id', function(req, res, next) {

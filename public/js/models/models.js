@@ -51,7 +51,18 @@ window.Register = Backbone.Model.extend({
         email: "",
         password: "",
         confirmPassword: "",
-        picture: null
+        picture: "./pics/male_avatar.jpg",
+        type: "",
+        height: "",
+        weight: "",
+        alcohol: "",
+        smoking: "",
+        alergies: "",
+        bodyPicture: "./pics/male_avatar.jpg",
+        age: "",
+        description: "",
+        siteUrl: "",
+        ratings: ""
     }
 });
 

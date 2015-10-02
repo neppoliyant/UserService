@@ -14,8 +14,7 @@ window.DashboardView = Backbone.View.extend({
     },
 
     render: function () {
-
-        $(this.el).html(this.template({weeklyExercises : this.weeklyExercise}));
+        $(this.el).html(this.template({weeklyExercises : this.weeklyExercise, user: app.model.attributes}));
         return this;
     }
 });

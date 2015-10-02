@@ -29,10 +29,10 @@ window.TrainersView = Backbone.View.extend({
     },
 
     subscribe: function(e){
-        if (!app.model) {
+        /*if (!app.model) {
             alert("Please login to subscribe");
             return;
-        }
+        }*/
         app.trainerDetail = e.target.value;
         app.navigate('trainer', true);
     },

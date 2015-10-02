@@ -49,6 +49,7 @@ function register(req, res) {
         var id = utils.userToken(req.body.email, req.body.password);
         console.log("user id : " + id);
         req.body.id = id;
+        req.body._id = id;
         req.body.isValid = true;
         db.updateUser(id, req.body, function(err, result) {
             if (err || !result) {

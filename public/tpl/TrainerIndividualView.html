@@ -1,22 +1,102 @@
-<div class="row-fluid" id="trainerCollection">
-	<div class="span12"><legend><h4><%= name %></h4></legend>
-		<div class="span10">
+<div class="row-fluid">
+	<div class="span12">
+    	<legend><h4><%= name %></h4></legend>
+    </div>
+    <div class="span2">
+	<div class="panel panel-default">
+	<div class="panel-body">
+		<div class="col-sm-2 col-md-4">
+	      <img src="<%= picture %>" style="width:200px;height:218px;">
+	    </div>
+	</div>
+	</div>
+	</div>
+
+	<div class="span6">
+	<div class="panel panel-default">
+	<div class="panel-heading">Info</div>
+	<div class="panel-body">
+		<div class="col-sm-6 col-md-4">
+			<p> Name : <%= name %> </p>
+			<p> Email : <%= email %> </p>
+			<p> Type : <%= type %> </p>
+		<p> Rating : <%= ratings %></p>
+        <p> Site : <%= siteUrl %></p>
+        <p> Description : <%= description %></p>
+  	</div>
+	</div>
+	</div>
+	</div>
+
+	<div class="span12">
+	<legend><h4></h4></legend>
+	</div>
+
+	<div class="span5">
 		<div class="panel panel-default">
+		<div class="panel-heading">12 Weeks Program <div class="pull-right"> <a value="<%= id %>">Subscribe</a></div></div>
 		<div class="panel-body">
 			<div class="col-sm-6 col-md-4">
-		    <div class="thumbnail">
-		      <img src="<%= picture %>" style="width:200px;height:228px;">
-		      <div class="caption">
-		        <h3><%= name %></h3> <div class="pull-right">
-				<button class="btn btn-default Subscribe" value="<%= id %>" type="submit">Subscribe</button></div>
-		        <p>Rating: <%= ratings %></p>
-		        <p>Site: <%= siteUrl %></p>
-		        <p>Description: <%= description %></p>
-		      </div>
-		    </div>
-		  </div>
+				<p> Workout : 6/5/4/3 days split every week </p>
+				<p> Diet : Available </p>
+				<p> Supplements : Yes</p>
+				<p> Doubt Clarification : Yes </p>
+				<p> Video Chat : Yes (Schedule Appointment) </p>
+				<p> Instant Messaging : Yes </p>
+				<p> Price : $250 </p>
+	  		</div>
 		</div>
 		</div>
-	</div>
+		</div>
+
+		<div class="span5">
+		<div class="panel panel-default">
+		<div class="panel-heading">8 Weeks Program <div class="pull-right"> <a value="<%= id %>">Subscribe</a></div></div>
+		<div class="panel-body">
+			<div class="col-sm-6 col-md-4">
+				<p> Workout : 6/5/4/3 days split every week </p>
+				<p> Diet : Available </p>
+				<p> Supplements : Yes</p>
+				<p> Doubt Clarification : Yes </p>
+				<p> Video Chat : No </p>
+				<p> Instant Messaging : No </p>
+				<p> Price : $200 </p>
+	  		</div>
+		</div>
+		</div>
+		</div>
+
+		<div class="span5">
+		<div class="panel panel-default">
+		<div class="panel-heading">4 Weeks Program <div class="pull-right"> <a value="<%= id %>">Subscribe</a></div></div>
+		<div class="panel-body">
+			<div class="col-sm-6 col-md-4">
+				<p> Workout : 6/5/4/3 days split every week </p>
+				<p> Diet : Available </p>
+				<p> Supplements : Yes</p>
+				<p> Doubt Clarification : Yes </p>
+				<p> Video Chat : No </p>
+				<p> Instant Messaging : No </p>
+				<p> Price : $99 </p>
+	  		</div>
+		</div>
+		</div>
+		</div>
+
+		<div class="span5">
+		<div class="panel panel-default">
+		<div class="panel-heading">Diet Program <div class="pull-right"> <a value="<%= id %>">Subscribe</a></div></div>
+		<div class="panel-body">
+			<div class="col-sm-6 col-md-4">
+				<p> Weeks : 4 Weeks </p>
+				<p> Diet : Available </p>
+				<p> Supplements : No</p>
+				<p> Doubt Clarification : Yes </p>
+				<p> Video Chat : No </p>
+				<p> Instant Messaging : No </p>
+				<p> Price : $99 </p>
+	  		</div>
+		</div>
+		</div>
 	</div>
 </div>

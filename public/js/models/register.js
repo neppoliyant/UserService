@@ -51,6 +51,12 @@ window.Register = Backbone.Model.extend({
         email: "",
         password: "",
         confirmPassword: "",
-        picture: null
+        picture: "",
+        height: "",
+        weight: "",
+        alcohol: "",
+        smoking: "",
+        alergies: "",
+        bodyPic: ""
     }
 });

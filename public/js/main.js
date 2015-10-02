@@ -12,7 +12,8 @@ var AppRouter = Backbone.Router.extend({
         "contactus"         : "contactus",
         "trainers"          : "trainers",
         "workouts"          : "workouts",
-        "trainer"            : "trainer"
+        "trainer"           : "trainer",
+        "userDetails"       : "userdetails"
     },
 
     initialize: function () {
@@ -36,7 +37,16 @@ var AppRouter = Backbone.Router.extend({
 
     Loggedhome: function (id) {
         this.headerView = new LoggedHeaderView({model: app.model});
-        this.homeView = new DashboardView({model: app.model});
+        if (!app.model.attributes.isRegistered) {
+            if (app.model.attributes.type == "Trainee") {
+                this.homeView = new RegisterViewT1({model: app.model});
+            } else {
+                this.homeView = new RegisterViewT2({model: app.model});
+            }
+        } else {
+            this.homeView = new DashboardView({model: app.model});
+        }
+        
         $('.header').html(this.headerView.el);
         $('#content').html(this.homeView.el);
     },
@@ -93,7 +103,9 @@ var AppRouter = Backbone.Router.extend({
 
 });
 
-utils.loadTemplate(['HomeView', 'HeaderView', 'AboutView', 'RegisterView', 'LoggedHomeView', 'LoggedHeaderView', 'ProfileView', 'DashboardView', 'SettingsView', 'TrainersView', 'ContactusView', 'WorkoutsView', 'TrainerIndividualView'], function() {
+utils.loadTemplate(['HomeView', 'HeaderView', 'AboutView', 'RegisterView', 'LoggedHomeView', 'LoggedHeaderView', 'ProfileView', 'DashboardView', 'SettingsView', 'TrainersView', 'ContactusView', 'WorkoutsView', 'TrainerIndividualView', 'RegisterViewT1', 'RegisterViewT2'], function() {
     app = new AppRouter();
+    app.config = {};
+    app.config.serverUrl = "http://localhost:3000/rest/";
     Backbone.history.start();
 });
