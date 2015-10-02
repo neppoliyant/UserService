@@ -26,8 +26,8 @@ module.exports = {
     swaggerBaseUrl: "http://96.119.5.107:3000/rest",
     swaggerDocUrl: "http://96.119.5.107:3000",
     couchBase: {
-        server: 'http://96.119.5.126/:8091',
-        bucketName: 'webrtc-registrar-dev',
-        bucketPassword: 'webrtc'
+        server: 'localhost:8091',
+        bucketName: 'bodyBuilding',
+        bucketPassword: 'star_2828'
     }
 }

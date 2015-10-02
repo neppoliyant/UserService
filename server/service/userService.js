@@ -4,6 +4,7 @@ module.exports = function() {
     var methodOverride = require('method-override');
     var user = require('../controller/userController');
     var userConnector = require('../connector/userConnector');
+    var logger = require('../log/winston');
     app.use(express.json());
     app.use(express.urlencoded());
     app.use(express.logger());
@@ -46,6 +47,7 @@ module.exports = function() {
     });
 
     app.post('/register', function(req, res, next) {
+        logger.info("User Added : " + req.body);
        user.register(req, res);  
     });
 

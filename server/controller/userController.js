@@ -5,6 +5,7 @@ var db = require('../dao/db');
 var utils = require('../utils/appUtils');
 var fs = require('fs');
 var config = require('../config/config.js');
+var logger = require('../log/winston');
 
 function getUserbyId(req, res) {
 
@@ -47,7 +48,8 @@ function register(req, res) {
         res.send(constructErrorMessage("payload is Mandatory", 400));
     } else {
         var id = utils.userToken(req.body.email, req.body.password);
-        console.log("user id : " + id);
+        console.log("User Added : " + id + "Email : " + req.body.email);
+        logger.info("User Added : " + id + "Email : " + req.body.email);
         req.body.id = id;
         req.body._id = id;
         req.body.isValid = true;

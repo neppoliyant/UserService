@@ -25,7 +25,7 @@ app.use(new rack.JadeAsset({
   dirname: __dirname + '/server/views'})
 );
 app.use(express.logger('dev'));
-app.use(express.bodyParser());
+app.use(express.bodyParser({limit: '50mb'}));
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use( express.cookieParser());
