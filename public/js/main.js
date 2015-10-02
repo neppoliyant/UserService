@@ -106,6 +106,6 @@ var AppRouter = Backbone.Router.extend({
 utils.loadTemplate(['HomeView', 'HeaderView', 'AboutView', 'RegisterView', 'LoggedHomeView', 'LoggedHeaderView', 'ProfileView', 'DashboardView', 'SettingsView', 'TrainersView', 'ContactusView', 'WorkoutsView', 'TrainerIndividualView', 'RegisterViewT1', 'RegisterViewT2'], function() {
     app = new AppRouter();
     app.config = {};
-    app.config.serverUrl = "http://localhost:3000/rest/";
+    app.config.serverUrl = "http://96.119.5.107:3000/rest/";
     Backbone.history.start();
 });
