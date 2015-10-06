@@ -39,6 +39,23 @@ if (config.log.plaintext.enabled) {
         maxsize: config.log.plaintext.maxsize
     }));
 }
+
+//Audit Log
+if(config.log.audit.enabled) {
+    var logdir1 = config.log.audit.dirname || path.normalize(__dirname + '/../..');
+    transports.push(new winston.transports.File({
+        level: config.log.audit.level,
+        prettyPrint: true,
+        json: false,
+        timestamp: true,
+        handleExceptions: true,
+        // File specific:
+        filename: config.log.audit.filename,
+        dirname: logdir1,
+        maxsize: config.log.audit.maxsize
+    }));
+}
+
 //Customized levels for audit logs
 var myCustomLevels = {
     levels: {

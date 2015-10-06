@@ -46,7 +46,6 @@ window.HomeView = Backbone.View.extend({
 
     login: function () {
         var self = this;
-        console.log('before save');
         this.model.save(null, {
             success: function (model) {
                 self.render();
@@ -58,7 +57,7 @@ window.HomeView = Backbone.View.extend({
                 }
             },
             error: function () {
-                utils.showAlert('Error', 'An error occurred while trying to get user details', 'alert-error');
+                utils.showAlert('Error', 'Invalid email and password', 'alert-error');
             }
         });
     }

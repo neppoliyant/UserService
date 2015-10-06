@@ -6,7 +6,7 @@ module.exports = {
             colorize: false
         },
         plaintext: {
-            enabled: true,
+            enabled: false,
             level: 'debug',
             filename: 'app.log',
             dirname: 'logs',
@@ -15,7 +15,7 @@ module.exports = {
         audit: {
             enabled: true,
             level: 'audit',
-            filename: 'app.log',
+            filename: 'appAudit.log',
             dirname: 'logs',
             maxsize: 10485760
         }

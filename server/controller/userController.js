@@ -6,6 +6,7 @@ var utils = require('../utils/appUtils');
 var fs = require('fs');
 var config = require('../config/config.js');
 var logger = require('../log/winston');
+var auditlog = require('../log/auditlog').auditlog;
 var nodemailer = require('nodemailer');
 
 var smtpTransport = nodemailer.createTransport("STMP", {
@@ -34,9 +35,11 @@ function getUserbyId(req, res) {
             if (err || !result) {
                 res.statusCode = 500;
                 res.send(constructErrorMessage(err, 500));
+                auditlog(req, err);
             } else {
                 res.statusCode = 200;
                 res.send(result.value);
+                auditlog(req, result.value);
             }
         });
     }
@@ -53,9 +56,11 @@ function addUser(req, res) {
             if (err || !result) {
                 res.statusCode = 500;
                 res.send(constructErrorMessage(err, 500));
+                auditlog(req, err);
             } else {
                 res.statusCode = 200;
                 res.send(constructSuccessMessage("Updated/Inserted Successfully", 200, result));
+                auditlog(req, "Success");
             }
         });
     }
@@ -78,9 +83,11 @@ function register(req, res) {
             if (err || !result) {
                 res.statusCode = 500;
                 res.send(constructErrorMessage(err, 500));
+                auditlog(req, err);
             } else {
                 res.statusCode = 200;
                 res.send(req.body);
+                auditlog(req, res.body);
             }
         });
     }
@@ -99,9 +106,11 @@ function login(req, res) {
             if (err || !result) {
                 res.statusCode = 500;
                 res.send(constructErrorMessage(err, 500));
+                auditlog(req, err);
             } else {
                 res.statusCode = 200;
                 res.send(result.value);
+                auditlog(req, results.value);
             }
         });
     }
@@ -116,9 +125,11 @@ function deleteUserbyId(req, res) {
             if (err || !result) {
                 res.statusCode = 500;
                 res.send(constructErrorMessage(err, 500));
+                auditlog(req, err);
             } else {
                 res.statusCode = 200;
                 res.send(constructSuccessMessage("Deleted Successfully", 200, result));
+                auditlog(req, "Delete Successfully");
             }
         });
     }
@@ -138,6 +149,7 @@ function getAllTrainers(req, res) {
                 resValue.push(result[i].value);
             }
             res.send(resValue);
+            auditlog(req, resValue);
         }
     });
 }
@@ -151,6 +163,7 @@ function savePicture(req, res) {
     });
     res.statusCode = 200;
     res.send("Success");
+    auditlog(req, "Success");
 }
 
 function getPicture(req, res) {
@@ -164,6 +177,7 @@ function getPicture(req, res) {
             res.statusCode = 200;
             res.setHeader('content-type', 'image/png');
             res.send(data);
+            auditlog(req, "Success");
         }
     });
 }
@@ -200,6 +214,7 @@ function suggestion(req, res) {
             db.updateUser(id, sugestionlist, function(err, result) {
                 res.statusCode = 200;
                 res.send("Success");
+                auditlog(req, "Success");
             });
         });
         
@@ -215,6 +230,7 @@ function gettrainees(req, res) {
         console.log(results.value);
         res.statusCode = 200;
         res.send(results.value);
+        auditlog(req, results.value);
     });
         
 }
