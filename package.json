@@ -29,6 +29,7 @@
     "swagger-node-express": "~2.0",
     "mongodb": "1.1.8",
     "socket.io": "0.9.10",
-    "backbone-tree-view": ">0.0.1"
+    "backbone-tree-view": ">0.0.1",
+    "nodemailer": "~0.7.1"
   }
 }

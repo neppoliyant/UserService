@@ -284,3 +284,34 @@ window.RegisterViewT2 = Backbone.View.extend({
         });
     }
 });
+
+window.SugestionView = Backbone.View.extend({
+
+    initialize: function () {
+        this.render();
+    },
+
+    render: function () {
+        $(this.el).html(this.template(this.model.toJSON()));
+        return this;
+    },
+
+    events: {
+        "click .save"   : "login"
+    },
+
+    login: function () {
+        var self = this;
+        this.model.attributes._id = "suggestionList";
+        this.model.attributes.name = this.$('form :input')[0].value;
+        this.model.attributes.suggestion = this.$('form :input')[1].value;
+        this.model.save(null, {
+            success: function (model) {
+                self.render();
+            },
+            error: function () {
+                self.render();
+            }
+        });
+    }
+});

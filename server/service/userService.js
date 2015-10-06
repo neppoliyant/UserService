@@ -74,6 +74,20 @@ module.exports = function() {
         user.getPicture(req, res);
     });
 
+    app.post('/sendemail/:id', function(req, res, next) {
+        logger.info("Insidei send mail");
+        console.log('user id : ' + req.params.id);
+        user.sendEmail(req, res);
+    });
+
+    app.post('/suggestion', function(req, res, next) {
+        user.suggestion(req, res);
+    });
+
+    app.put('/suggestion', function(req, res, next) {
+        user.suggestion(req, res);
+    });
+
 
 	return app;
 }();

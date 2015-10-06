@@ -6,9 +6,26 @@ var utils = require('../utils/appUtils');
 var fs = require('fs');
 var config = require('../config/config.js');
 var logger = require('../log/winston');
+var nodemailer = require('nodemailer');
+
+var smtpTransport = nodemailer.createTransport("STMP", {
+   service: "Yahoo",
+   auth: {
+    user: 'neppoliyanthangavelu28@yahoo.com',
+    pass: 'star_2828'
+   }
+});
+
+var email12 = nodemailer.createTransport("SMTP", {
+service: "Yahoo",
+auth: {
+    user: "neppoliyanthangavelu28@yahoo.com",
+    pass: "star_2828"
+}
+});
 
 function getUserbyId(req, res) {
-
+    logger.info("MethodEnter: getUsers");
     if (!req.params.id) {
         res.statusCode = 400;
         res.send(constructErrorMessage("id is Mandatory", 400));
@@ -23,9 +40,11 @@ function getUserbyId(req, res) {
             }
         });
     }
+    logger.info("MethodExit: getUsers");
 }
 
 function addUser(req, res) {
+    logger.info("MethodEnter: addUser");
     if (!req.body) {
         res.statusCode = 400;
         res.send(constructErrorMessage("payload is Mandatory", 400));
@@ -40,9 +59,11 @@ function addUser(req, res) {
             }
         });
     }
+    logger.info("MethodExit: addUser");
 }
 
 function register(req, res) {
+    logger.info("MethodEnter: register");
     if (!req.body) {
         res.statusCode = 400;
         res.send(constructErrorMessage("payload is Mandatory", 400));
@@ -63,6 +84,7 @@ function register(req, res) {
             }
         });
     }
+    logger.info("MethodExit: register");
 }
 
 function login(req, res) {
@@ -146,6 +168,57 @@ function getPicture(req, res) {
     });
 }
 
+function sendEmail(req, res) {
+    logger.info("inside sendEmail");
+    var mailOptions = {
+        from: req.body.from, 
+        to: req.body.to, 
+        subject: req.body.subject,  
+        text: req.body.body, 
+        html: req.body.html 
+    };
+    email12.sendMail(mailOptions, function(error, info){
+        if(error){
+            return console.log(error);
+        }
+        console.log('Message sent: ' + info.response);
+    });
+}
+
+function suggestion(req, res) {
+    logger.info("MethodEnter: suggestion");
+    if (!req.body) {
+        res.statusCode = 400;
+        res.send(constructErrorMessage("payload is Mandatory", 400));
+    } else {
+        var id = "suggestionList";
+        db.getUser(id, function(err, results) {
+            console.log(results.value);
+            var sugestionlist = results.value;
+            sugestionlist.suggestionList.push(req.body);
+            console.log(sugestionlist);
+            db.updateUser(id, sugestionlist, function(err, result) {
+                res.statusCode = 200;
+                res.send("Success");
+            });
+        });
+        
+    }
+    logger.info("MethodExit: suggestion");
+}
+
+function gettrainees(req, res) {
+    logger.info("MethodEnter: trainees");
+
+    var id = req.params.id + "Trainees";
+    db.getUser(id, function(err, results) {
+        console.log(results.value);
+        res.statusCode = 200;
+        res.send(results.value);
+    });
+        
+}
+
 module.exports.getUserbyId = getUserbyId;
 module.exports.addUser = addUser;
 module.exports.deleteUserbyId = deleteUserbyId;
@@ -154,4 +227,7 @@ module.exports.register = register;
 module.exports.getAllTrainers = getAllTrainers;
 module.exports.savePicture = savePicture;
 module.exports.getPicture = getPicture;
+module.exports.sendEmail = sendEmail;
+module.exports.suggestion = suggestion;
+module.exports.gettrainees = gettrainees;
 

@@ -13,12 +13,19 @@ var AppRouter = Backbone.Router.extend({
         "trainers"          : "trainers",
         "workouts"          : "workouts",
         "trainer"           : "trainer",
-        "userDetails"       : "userdetails"
+        "suggestion"        : "suggestion"
+
     },
 
     initialize: function () {
         this.headerView = new HeaderView();
         $('.header').html(this.headerView.el);
+    },
+
+    suggestion: function() {
+        var sug = new Suggestion();
+        this.homeView = new SugestionView({model: sug});
+        $('#content').html(this.homeView.el);
     },
 
     home: function (id) {
@@ -44,7 +51,12 @@ var AppRouter = Backbone.Router.extend({
                 this.homeView = new RegisterViewT2({model: app.model});
             }
         } else {
-            this.homeView = new DashboardView({model: app.model});
+            if (app.model.attributes.type == "Trainee") {
+                this.homeView = new DashboardView({model: app.model});
+            } else {
+                this.homeView = new DashboardTraiverView({model: app.model});
+            }
+            
         }
         
         $('.header').html(this.headerView.el);
@@ -64,7 +76,12 @@ var AppRouter = Backbone.Router.extend({
     },
 
     dashboard: function (id) {
-        $('#content').html(new DashboardView({model: app.model}).el);
+        if (app.model.attributes.type == "Trainee") {
+                $('#content').html(new DashboardView({model: app.model}).el);
+            } else {
+                $('#content').html(new DashboardTraiverView({model: app.model}).el);
+            }
+        
     },
 
 	profile: function() {
@@ -103,7 +120,7 @@ var AppRouter = Backbone.Router.extend({
 
 });
 
-utils.loadTemplate(['HomeView', 'HeaderView', 'AboutView', 'RegisterView', 'LoggedHomeView', 'LoggedHeaderView', 'ProfileView', 'DashboardView', 'SettingsView', 'TrainersView', 'ContactusView', 'WorkoutsView', 'TrainerIndividualView', 'RegisterViewT1', 'RegisterViewT2'], function() {
+utils.loadTemplate(['HomeView', 'HeaderView', 'AboutView', 'RegisterView', 'LoggedHomeView', 'LoggedHeaderView', 'ProfileView', 'DashboardView', 'SettingsView', 'TrainersView', 'ContactusView', 'WorkoutsView', 'TrainerIndividualView', 'RegisterViewT1', 'RegisterViewT2', 'SugestionView', 'DashboardTraiverView'], function() {
     app = new AppRouter();
     app.config = {};
     app.config.serverUrl = "http://96.119.5.107:3000/rest/";

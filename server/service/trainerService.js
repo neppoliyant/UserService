@@ -19,5 +19,14 @@ module.exports = function() {
         user.getAllTrainers(req, res);
     });
 
+    app.get('/trainee/:id', function(req, res, next) {
+        console.log('user id : ' + req.params.id);
+        user.getUserbyId(req, res);
+    });
+
+    app.get('/trainees/:id', function(req, res, next) {
+        user.gettrainees(req, res);
+    });
+
 	return app;
 }();

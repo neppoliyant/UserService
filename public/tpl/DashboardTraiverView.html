@@ -4,24 +4,24 @@
     </div>
     <div class="span5">
 		<div class="panel panel-default">
-			<div class="panel-heading">Workout Details</div>
+			<div class="panel-heading">Upcoming Trainees workout</div>
 			<div class="panel-body">
 				<table class="table table-hover">
 					<tr>
-						<th> Days
+						<th> Week
 						</th>
-						<th> Body Focus
+						<th> Name
 						</th>
-						<th> Level
+						<th> update
 						</th>
 					</tr>
-					<% _.each(weeklyExercises, function(exercise) {%>
+					<% _.each(trainees, function(trainee) {%>
 					<tr>
-						<td> <%= exercise.day %>
+						<td> week 1
 						</td>
-						<td> <%= exercise.muscleGroup %>
+						<td> <%= trainee.name %>
 						</td>
-						<td> low
+						<td> <a href=# class="update" data-value="<%= trainee.id %>" >update</a>
 						</td>
 					</tr>
 					<% }); %>
@@ -31,25 +31,31 @@
 	</div>
 	<div class="span5">
 		<div class="panel panel-default">
-		<div class="panel-heading">Suppliments</div>
+		<div class="panel-heading">Total No Of Trainees</div>
 		<div class="panel-body">
 		<table class="table table-hover">
 					<tr>
-						<td> Protien
+						<td> Over All
 						</td>
-						<td> 2 Scoops
-						</td>
-					</tr>
-					<tr>
-						<td> Fat Burner
-						</td>
-						<td> 1
+						<td> 78
 						</td>
 					</tr>
 					<tr>
-						<td> Creatine
+						<td> This month
 						</td>
-						<td> 1 Scoop
+						<td> 10
+						</td>
+					</tr>
+					<tr>
+						<td> Last month
+						</td>
+						<td> 5
+						</td>
+					</tr>
+					<tr>
+						<td> This month Expiring Trainees
+						</td>
+						<td> 5
 						</td>
 					</tr>
 				</table>
@@ -71,18 +77,6 @@
 	<div class="span5">
 		<div class="panel panel-default">
 			<div class="panel-heading">Program Progress</div>
-			<div class="panel-body">
-				<div class="progress">
-				  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">
-				    <span class="sr-only">30% Complete</span>
-				  </div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="span5">
-		<div class="panel panel-default">
-			<div class="panel-heading">Trainer Detail</div>
 			<div class="panel-body">
 				<div class="progress">
 				  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">

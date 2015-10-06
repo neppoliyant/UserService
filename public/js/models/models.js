@@ -179,6 +179,22 @@ window.Trainer = Backbone.Model.extend({
     }
 });
 
+window.Trainees = Backbone.Model.extend({
+
+    urlRoot: "/rest/trainees",
+    
+    idAttribute: "_id",
+
+    initialize: function () {
+    },
+
+    defaults: {
+        id: null,
+        email: "",
+        name: ""
+    }
+});
+
 window.Workout = Backbone.Model.extend({
 
     urlRoot: "/rest/workout",
@@ -208,5 +224,21 @@ window.Picture = Backbone.Model.extend({
         id: null,
         body: {},
         weeklyExercise: []
+    }
+});
+
+window.Suggestion = Backbone.Model.extend({
+
+    urlRoot: "/rest/suggestion",
+
+    idAttribute: "_id",
+
+    initialize: function () {
+    },
+
+    defaults: {
+        _id: null,
+        name: "",
+        suggestion: ""
     }
 });
