@@ -110,7 +110,7 @@ function login(req, res) {
             } else {
                 res.statusCode = 200;
                 res.send(result.value);
-                auditlog(req, results.value);
+                auditlog(req, result.value);
             }
         });
     }

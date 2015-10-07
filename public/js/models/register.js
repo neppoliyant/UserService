@@ -49,6 +49,7 @@ window.Register = Backbone.Model.extend({
         _id: null,
         name: "",
         email: "",
+        gender: "",
         password: "",
         confirmPassword: "",
         picture: "",
