@@ -156,7 +156,7 @@ function getAllTrainers(req, res) {
 
 function savePicture(req, res) {
     var dir = config.dir + req.params.id + ".png";
-    var data = req.body.body.imageData;
+    var data = req.body.body.imageData || req.body.imageData;
     fs.writeFile(dir, data, 'binary', function(err){
         if (err) throw err
         console.log('File saved.')
