@@ -10,6 +10,7 @@ var express = require('express')
   , swagger = require('swagger-node-express').createNew(app)
   ;
 var server = http.createServer(app);
+var io = require('socket.io')(server)
 var config = require('./server/config/config');
 
 app.set('port', process.env.PORT || 3000);
@@ -51,6 +52,17 @@ app.get('/health.html', function(req, res, next) {
 //version check
 app.get('/version.html', function(req, res, next) {
   res.send('App version is 1.0');   
+});
+
+io.on('connection', function(socket){
+  socket.on('instantMessage', function(msg){
+    console.log('MEssage ' + JSON.stringify(msg));
+    io.emit('instantMessage', msg);
+  });
+
+    socket.on('logged in', function (username) {
+    console.log('Logged in user ' + username);
+  });
 });
 
 server.listen(app.get('port'), function(){

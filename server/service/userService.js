@@ -75,13 +75,16 @@ module.exports = function() {
     });
 
     app.post('/sendemail/:id', function(req, res, next) {
-        logger.info("Insidei send mail");
-        console.log('user id : ' + req.params.id);
         user.sendEmail(req, res);
     });
 
     app.post('/suggestion', function(req, res, next) {
         user.suggestion(req, res);
+    });
+
+    app.post('/subscribe', function(req, res, next) {
+        logger.info("Body : " + req.body);
+        user.subscribe(req, res);
     });
 
     app.put('/suggestion', function(req, res, next) {

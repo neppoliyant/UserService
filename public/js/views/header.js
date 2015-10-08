@@ -27,6 +27,8 @@ window.LoggedHeaderView = Backbone.View.extend({
 
     initialize: function () {
         this.render();
+          app.socket = io();
+          app.socket.emit('logged in', this.model.attributes.name);
     },
 
     render: function () {

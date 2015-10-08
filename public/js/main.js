@@ -13,7 +13,8 @@ var AppRouter = Backbone.Router.extend({
         "trainers"          : "trainers",
         "workouts"          : "workouts",
         "trainer"           : "trainer",
-        "suggestion"        : "suggestion"
+        "suggestion"        : "suggestion",
+        "chat"              : "chat"
 
     },
 
@@ -25,6 +26,11 @@ var AppRouter = Backbone.Router.extend({
     suggestion: function() {
         var sug = new Suggestion();
         this.homeView = new SugestionView({model: sug});
+        $('#content').html(this.homeView.el);
+    },
+
+    chat: function() {
+        this.homeView = new ChatView();
         $('#content').html(this.homeView.el);
     },
 
@@ -43,7 +49,8 @@ var AppRouter = Backbone.Router.extend({
     },
 
     Loggedhome: function (id) {
-        this.headerView = new LoggedHeaderView({model: app.model});
+        app.model.attributes.chat = 1;
+        this.headerView = new LoggedHeaderView({model: app.model, chat: 1});
         if (!app.model.attributes.isRegistered) {
             if (app.model.attributes.type == "Trainee") {
                 this.homeView = new RegisterViewT1({model: app.model});
@@ -58,7 +65,6 @@ var AppRouter = Backbone.Router.extend({
             }
             
         }
-        
         $('.header').html(this.headerView.el);
         $('#content').html(this.homeView.el);
     },
@@ -120,7 +126,7 @@ var AppRouter = Backbone.Router.extend({
 
 });
 
-utils.loadTemplate(['HomeView', 'HeaderView', 'AboutView', 'RegisterView', 'LoggedHomeView', 'LoggedHeaderView', 'ProfileView', 'DashboardView', 'SettingsView', 'TrainersView', 'ContactusView', 'WorkoutsView', 'TrainerIndividualView', 'RegisterViewT1', 'RegisterViewT2', 'SugestionView', 'DashboardTraiverView'], function() {
+utils.loadTemplate(['HomeView', 'HeaderView', 'AboutView', 'RegisterView', 'LoggedHomeView', 'LoggedHeaderView', 'ProfileView', 'DashboardView', 'SettingsView', 'TrainersView', 'ContactusView', 'WorkoutsView', 'TrainerIndividualView', 'RegisterViewT1', 'RegisterViewT2', 'SugestionView', 'DashboardTraiverView', 'ChatView'], function() {
     app = new AppRouter();
     app.config = {};
     app.config.serverUrl = "http://96.119.5.107:3000/rest/";

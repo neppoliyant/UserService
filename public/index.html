@@ -76,7 +76,16 @@
 <script src="js/views/settings.js"></script>
 <script src="js/views/register.js"></script>
 <script src="js/views/dashboard.js"></script>
+<script src="js/views/chat.js"></script>
 <script src="js/main.js"></script>
-
+<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script>
+      var socket = io();
+      socket.on('instantMessage', function(msg){
+        console.log(msg.message);
+        $('#messages').append($('<li>').text(msg.sender + ': ' + msg.message));
+      });
+</script>
 </body>
 </html>

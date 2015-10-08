@@ -29,13 +29,13 @@ window.TrainersView = Backbone.View.extend({
     },
 
     subscribe: function(e){
-        /*if (!app.model) {
+        if (!app.model) {
             alert("Please login to subscribe");
             return;
-        }*/
+        }
         app.trainerDetail = e.target.value;
         app.navigate('trainer', true);
-    },
+    }
 });
 
 window.TrainerCollection = Backbone.Collection.extend({
@@ -53,7 +53,25 @@ window.TrainerCollection = Backbone.Collection.extend({
 
 window.TrainerIndividualView = Backbone.View.extend({
     events: {
+        "click .subscribe" : "subscribe"
     },
+
+    subscribe: function(e){
+        var subscribe = new Subscribe();
+        subscribe.attributes.id = app.model.attributes._id;
+        subscribe.attributes.name = app.model.attributes.name;
+        subscribe.attributes.trainerId = this.trainer.attributes._id;
+        subscribe.attributes.trainerName = this.trainer.attributes.name;
+        subscribe.save(null, {
+            success: function (response) {
+                utils.showAlert('success', 'Successfully Subscribe.', 'alert-success');
+            },
+            error: function () {
+                utils.showAlert('Error', 'An error occurred while trying to get user details', 'alert-error');
+            }
+        });
+    },
+
     initialize: function () {
         this.trainer = new Trainer({id : app.trainerDetail});
         var self = this;

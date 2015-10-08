@@ -62,7 +62,8 @@ window.Register = Backbone.Model.extend({
         age: "",
         description: "",
         siteUrl: "",
-        ratings: ""
+        ratings: "",
+        trainer: ""
     }
 });
 
@@ -240,5 +241,22 @@ window.Suggestion = Backbone.Model.extend({
         _id: null,
         name: "",
         suggestion: ""
+    }
+});
+
+window.Subscribe = Backbone.Model.extend({
+
+    urlRoot: "/rest/subscribe",
+
+    initialize: function () {
+    },
+
+    defaults: {
+        id: null,
+        name: "",
+        trainerId: "",
+        trainerName: "",
+        packageSubscribe: "",
+        ExpiryDate: ""
     }
 });

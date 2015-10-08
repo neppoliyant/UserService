@@ -1056,3 +1056,32 @@
     overflow: visible !important;
   }
 }
+
+div[class*="col-"] > .square-responsive,
+span[class*="col-"] > .square-responsive,
+ol[class*="col-"] > .square-responsive,
+ul[class*="col-"] > .square-responsive,
+li[class*="col-"] > .square-responsive{
+   padding-bottom:100%; 
+}
+div[class*="col-"] > .rect-responsive,
+span[class*="col-"] > .rect-responsive,
+ol[class*="col-"] > .rect-responsive,
+ul[class*="col-"] > .rect-responsive,
+li[class*="col-"] > .rect-responsive{
+   padding-bottom:50%;
+}
+.square-responsive,
+.rect-responsive{
+     position:relative; 
+     overflow:hidden;
+}
+.square-responsive > *,
+.rect-responsive > *{
+     position:absolute; 
+}
+.square-responsive > .content,
+.rect-responsive > .content {
+     width:100%;
+     height:100%;
+}
