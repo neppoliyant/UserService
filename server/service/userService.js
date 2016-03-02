@@ -87,10 +87,17 @@ module.exports = function() {
         user.subscribe(req, res);
     });
 
+    app.get('/chat/messages/:id', function(req, res, next) {
+        user.getMessages(req, res);
+    });
+
+    app.put('/chat/messages/:id', function(req, res, next) {
+        user.putMessages(req, res);
+    });
+
     app.put('/suggestion', function(req, res, next) {
         user.suggestion(req, res);
     });
-
 
 	return app;
 }();

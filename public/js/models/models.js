@@ -69,7 +69,7 @@ window.Register = Backbone.Model.extend({
 
 window.Login = Backbone.Model.extend({
 
-    urlRoot: "/rest/login",
+    urlRoot: "http://localhost:3001/rest/obb/login",
 
     idAttribute: "_id",
 
@@ -258,5 +258,22 @@ window.Subscribe = Backbone.Model.extend({
         trainerName: "",
         packageSubscribe: "",
         ExpiryDate: ""
+    }
+});
+
+window.Messages = Backbone.Model.extend({
+
+    urlRoot: "/rest/chat/messages",
+
+    idAttribute: "_id",
+
+    initialize: function () {
+    },
+
+    defaults: {
+        _id: null,
+        name: "",
+        message: "",
+        date: ""
     }
 });

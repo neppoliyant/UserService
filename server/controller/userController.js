@@ -279,6 +279,29 @@ function gettrainees(req, res) {
         
 }
 
+function getMessages(req, res) {
+    logger.info("MethodEnter: getMessages");
+    var id = req.params.id;
+    db.getMessages(id, function(err, results) {
+        res.statusCode = 200;
+        res.send(results.value);
+        auditlog(req, results.value);
+    });    
+}
+
+function putMessages(req, res) {
+    logger.info("MethodEnter: getMessages");
+    var id = req.params.id;
+    db.getMessages(id, function(err, results) {
+        results.value.push(req.body);
+        db.putMessages(id, req.body, function(err, results) {
+            res.statusCode = 200;
+            res.send(results.value);
+            auditlog(req, "Successfully Updated");
+        });
+    });    
+}
+
 module.exports.getUserbyId = getUserbyId;
 module.exports.addUser = addUser;
 module.exports.deleteUserbyId = deleteUserbyId;
@@ -291,4 +314,6 @@ module.exports.sendEmail = sendEmail;
 module.exports.suggestion = suggestion;
 module.exports.gettrainees = gettrainees;
 module.exports.subscribe = subscribe;
+module.exports.getMessages = getMessages;
+module.exports.putMessages = putMessages;
 

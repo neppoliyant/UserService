@@ -1,6 +1,10 @@
 window.ChatView = Backbone.View.extend({
 
     initialize:function () {
+        var messages = new Messages({_id: app.model.attributes._id + 'Messages'});
+        messages.fetch(null, function(response) {
+            
+        });
     	if (this.created) {
     		return;
     	} else {
