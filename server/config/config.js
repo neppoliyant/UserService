@@ -20,16 +20,16 @@ module.exports = {
             maxsize: 10485760
         }
     },
-    serviceUrl : "http://192.81.215.71:3001/rest/",
+    serviceUrl : "http://localhost:3001/rest/",
     dir: "/opt/props/bodyBuilding/",
-    connectorUrl: "http://192.81.215.71:3001/rest/user/neps",
-    swaggerBaseUrl: "http://192.81.215.71:3001/rest",
-    swaggerDocUrl: "http://192.81.215.71:3001",
+    connectorUrl: "http://localhost:3001/rest/user/neps",
+    swaggerBaseUrl: "http://localhost:3001/rest",
+    swaggerDocUrl: "http://localhost:3001",
     couchBase: {
-        server: 'http://96.119.5.126:8091',
-        bucketName: 'webrtc-registrar-dev',
+        server: 'http://localhost:8091',
+        bucketName: 'bodybuilding',
         bucketPassword: 'webrtc',
-        msgBucketName: 'sasOptOut',
+        msgBucketName: 'bodybuildingProfile',
         msgBucketPassword: 'webrtc'
     },
     couchBaseLocal: {
